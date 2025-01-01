@@ -1,0 +1,666 @@
+<!doctype html>
+<html
+  lang="en"
+  class="theme-dark"
+>
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="frame-src *;"
+    />
+    <title>New SearX</title>
+    <style>
+      :root {
+        --color-answer-background: #fff;
+        --color-answer-font: #444;
+        --color-autocomplete-background-hover: #e3e3e3;
+        --color-autocomplete-background: #fff;
+        --color-autocomplete-border: #bbb;
+        --color-autocomplete-font: #000;
+        --color-autocomplete-shadow: 0 2px 8px rgba(34, 38, 46, 0.25);
+        --color-backtotop-background: #fff;
+        --color-backtotop-border: #ddd;
+        --color-backtotop-font: #444;
+        --color-bar-chart-primary: #5bc0de;
+        --color-bar-chart-secondary: #deb15b;
+        --color-base-background-mobile: #f2f5f8;
+        --color-base-background: #fff;
+        --color-base-font-rgb: 68, 68, 68;
+        --color-base-font: #444;
+        --color-btn-background: #3050ff;
+        --color-btn-font: #fff;
+        --color-categories-item-border-selected: #3050ff;
+        --color-categories-item-selected-font: #3050ff;
+        --color-doc-code-background: #ddeaff;
+        --color-doc-code: #003;
+        --color-error-background: #fae1e1;
+        --color-error: #db3434;
+        --color-favicon-background-color: #ddd;
+        --color-favicon-border-color: #ccc;
+        --color-footer-background: #fdfbff;
+        --color-footer-border: #ddd;
+        --color-header-background: #fdfbff;
+        --color-header-border: #ddd;
+        --color-image-resolution-background: rgba(0, 0, 0, 0.5);
+        --color-image-resolution-font: #fff;
+        --color-line-number: #64708d;
+        --color-loading-indicator-gap: #fff;
+        --color-loading-indicator: rgba(255, 255, 255, 0.2);
+        --color-result-background: #fff;
+        --color-result-border: #ddd;
+        --color-result-description-highlight-font: #000;
+        --color-result-detail-background: #242424;
+        --color-result-detail-font: #fff;
+        --color-result-detail-hr: #555;
+        --color-result-detail-label-font: lightgray;
+        --color-result-detail-link: #8af;
+        --color-result-detail-loader-border: rgba(255, 255, 255, 0.2);
+        --color-result-detail-loader-borderleft: rgba(0, 0, 0, 0);
+        --color-result-engines-font: #545454;
+        --color-result-image-background: #fff;
+        --color-result-image-span-font-selected: #fff;
+        --color-result-image-span-font: #444;
+        --color-result-link-font-highlight: #000bbb;
+        --color-result-link-font: #000bbb;
+        --color-result-link-visited-font: #9822c3;
+        --color-result-publishdate-font: #777;
+        --color-result-search-url-border: #ddd;
+        --color-result-search-url-font: #000;
+        --color-result-url-font: #000;
+        --color-result-vim-arrow: #000bbb;
+        --color-result-vim-selected: #f7f7f7;
+        --color-search-background-hover: #3050ff;
+        --color-search-background: #fff;
+        --color-search-border: #bbb;
+        --color-search-font: #222;
+        --color-search-shadow: 0 2px 8px rgba(34, 38, 46, 0.25);
+        --color-settings-engine-description-font: #545454;
+        --color-settings-table-group-background: #0001;
+        --color-settings-tr-hover: #ebebeb;
+        --color-show-btn-background: #bbb;
+        --color-show-btn-font: #000;
+        --color-sidebar-background: #fff;
+        --color-sidebar-border: #ddd;
+        --color-sidebar-font: #000;
+        --color-success-background: #e3fae1;
+        --color-success: #42db34;
+        --color-toolkit-badge-background: #545454;
+        --color-toolkit-badge-font: #fff;
+        --color-toolkit-checkbox-input-border: #3050ff;
+        --color-toolkit-checkbox-label-background: #ddd;
+        --color-toolkit-checkbox-label-border: #ddd;
+        --color-toolkit-checkbox-onoff-off-background: #ddd;
+        --color-toolkit-checkbox-onoff-off-mark-background: #aaa;
+        --color-toolkit-checkbox-onoff-off-mark-color: #fff;
+        --color-toolkit-checkbox-onoff-on-background: #ddd;
+        --color-toolkit-checkbox-onoff-on-mark-background: #3050ff;
+        --color-toolkit-checkbox-onoff-on-mark-color: #fff;
+        --color-toolkit-dialog-background: #fff;
+        --color-toolkit-dialog-border: #ddd;
+        --color-toolkit-engine-tooltip-background: #fff;
+        --color-toolkit-engine-tooltip-border: #ddd;
+        --color-toolkit-input-text-font: #222;
+        --color-toolkit-kbd-background: #000;
+        --color-toolkit-kbd-font: #fff;
+        --color-toolkit-loader-border: rgba(0, 0, 0, 0.2);
+        --color-toolkit-loader-borderleft: rgba(255, 255, 255, 0);
+        --color-toolkit-select-background-hover: #bbb;
+        --color-toolkit-select-background: #e1e1e1;
+        --color-toolkit-select-border: #ddd;
+        --color-toolkit-tabs-label-border: #fff;
+        --color-toolkit-tabs-section-border: #ddd;
+        --color-url-font: #334999;
+        --color-url-visited-font: #9822c3;
+        --color-warning-background: #faf5e1;
+        --color-warning: #dbba34;
+      }
+
+      @media (prefers-color-scheme: dark) {
+        :root.theme-auto {
+          --color-answer-background: #26292f;
+          --color-answer-font: #bbb;
+          --color-autocomplete-background-hover: #1e1e22;
+          --color-autocomplete-background: #2b2e36;
+          --color-autocomplete-border: #555;
+          --color-autocomplete-font: #fff;
+          --color-autocomplete-shadow: 0 2px 8px rgba(34, 38, 46, 0.25);
+          --color-backtotop-background: #2b2e36;
+          --color-backtotop-border: #333;
+          --color-backtotop-font: #bbb;
+          --color-base-background-mobile: #222428;
+          --color-base-background: #222428;
+          --color-base-font-rgb: 187, 187, 187;
+          --color-base-font: #bbb;
+          --color-btn-background: #58f;
+          --color-btn-font: #222;
+          --color-categories-item-border-selected: #58f;
+          --color-categories-item-selected-font: #58f;
+          --color-doc-code-background: #4d5a6f;
+          --color-doc-code: #ddd;
+          --color-error-background: #390a0a;
+          --color-error: #f55b5b;
+          --color-favicon-background-color: #ddd;
+          --color-favicon-border-color: #ccc;
+          --color-footer-background: #1e1e22;
+          --color-footer-border: #333;
+          --color-header-background: #1e1e22;
+          --color-header-border: #333;
+          --color-result-background: #26292f;
+          --color-result-border: #333;
+          --color-result-description-highlight-font: #fff;
+          --color-result-detail-background: #1a1a1c;
+          --color-result-detail-font: #fff;
+          --color-result-detail-hr: #555;
+          --color-result-detail-label-font: lightgray;
+          --color-result-detail-link: #8af;
+          --color-result-detail-loader-border: rgba(255, 255, 255, 0.2);
+          --color-result-detail-loader-borderleft: rgba(0, 0, 0, 0);
+          --color-result-engines-font: #a4a4a4;
+          --color-result-image-background: #222;
+          --color-result-image-span-font-selected: #222;
+          --color-result-image-span-font: #bbb;
+          --color-result-link-font-highlight: #8af;
+          --color-result-link-font: #8af;
+          --color-result-link-visited-font: #c09cd9;
+          --color-result-publishdate-font: #888;
+          --color-result-search-url-border: #555;
+          --color-result-search-url-font: #fff;
+          --color-result-url-font: #fff;
+          --color-result-vim-arrow: #8af;
+          --color-result-vim-selected: #1f1f23cc;
+          --color-search-background-hover: #58f;
+          --color-search-background: #2b2e36;
+          --color-search-border: #555;
+          --color-search-font: #fff;
+          --color-search-shadow: 0 2px 8px rgba(34, 38, 46, 0.25);
+          --color-settings-engine-description-font: #909090;
+          --color-settings-table-group-background: #1b1b21;
+          --color-settings-tr-hover: #2c2c32;
+          --color-show-btn-background: #555;
+          --color-show-btn-font: #fff;
+          --color-sidebar-background: #292c34;
+          --color-sidebar-border: #555;
+          --color-sidebar-font: #fff;
+          --color-success-background: #0e390a;
+          --color-success: #79f56e;
+          --color-toolkit-badge-background: #555;
+          --color-toolkit-badge-font: #fff;
+          --color-toolkit-checkbox-input-border: #58f;
+          --color-toolkit-checkbox-label-background: #222;
+          --color-toolkit-checkbox-label-border: #333;
+          --color-toolkit-checkbox-onoff-off-background: #313338;
+          --color-toolkit-checkbox-onoff-off-mark-background: #ddd;
+          --color-toolkit-checkbox-onoff-off-mark-color: #222;
+          --color-toolkit-checkbox-onoff-on-background: #313338;
+          --color-toolkit-checkbox-onoff-on-mark-background: #58f;
+          --color-toolkit-checkbox-onoff-on-mark-color: #222;
+          --color-toolkit-dialog-background: #1e1e22;
+          --color-toolkit-dialog-border: #555;
+          --color-toolkit-engine-tooltip-background: #222;
+          --color-toolkit-engine-tooltip-border: #333;
+          --color-toolkit-input-text-font: #fff;
+          --color-toolkit-kbd-background: #fff;
+          --color-toolkit-kbd-font: #000;
+          --color-toolkit-loader-border: rgba(255, 255, 255, 0.2);
+          --color-toolkit-loader-borderleft: rgba(0, 0, 0, 0);
+          --color-toolkit-select-background-hover: #373b49;
+          --color-toolkit-select-background: #313338;
+          --color-toolkit-select-border: #555;
+          --color-toolkit-tabs-label-border: #222;
+          --color-toolkit-tabs-section-border: #555;
+          --color-url-font: #8af;
+          --color-url-visited-font: #c09cd9;
+          --color-warning-background: #39300a;
+          --color-warning: #f1d561;
+        }
+      }
+
+      :root.theme-dark {
+        --color-answer-background: #26292f;
+        --color-answer-font: #bbb;
+        --color-autocomplete-background-hover: #1e1e22;
+        --color-autocomplete-background: #2b2e36;
+        --color-autocomplete-border: #555;
+        --color-autocomplete-font: #fff;
+        --color-autocomplete-shadow: 0 2px 8px rgba(34, 38, 46, 0.25);
+        --color-backtotop-background: #2b2e36;
+        --color-backtotop-border: #333;
+        --color-backtotop-font: #bbb;
+        --color-base-background-mobile: #222428;
+        --color-base-background: #222428;
+        --color-base-font-rgb: 187, 187, 187;
+        --color-base-font: #bbb;
+        --color-btn-background: #58f;
+        --color-btn-font: #222;
+        --color-categories-item-border-selected: #58f;
+        --color-categories-item-selected-font: #58f;
+        --color-doc-code-background: #4d5a6f;
+        --color-doc-code: #ddd;
+        --color-error-background: #390a0a;
+        --color-error: #f55b5b;
+        --color-favicon-background-color: #ddd;
+        --color-favicon-border-color: #ccc;
+        --color-footer-background: #1e1e22;
+        --color-footer-border: #333;
+        --color-header-background: #1e1e22;
+        --color-header-border: #333;
+        --color-result-background: #26292f;
+        --color-result-border: #333;
+        --color-result-description-highlight-font: #fff;
+        --color-result-detail-background: #1a1a1c;
+        --color-result-detail-font: #fff;
+        --color-result-detail-hr: #555;
+        --color-result-detail-label-font: lightgray;
+        --color-result-detail-link: #8af;
+        --color-result-detail-loader-border: rgba(255, 255, 255, 0.2);
+        --color-result-detail-loader-borderleft: rgba(0, 0, 0, 0);
+        --color-result-engines-font: #a4a4a4;
+        --color-result-image-background: #222;
+        --color-result-image-span-font-selected: #222;
+        --color-result-image-span-font: #bbb;
+        --color-result-link-font-highlight: #8af;
+        --color-result-link-font: #8af;
+        --color-result-link-visited-font: #c09cd9;
+        --color-result-publishdate-font: #888;
+        --color-result-search-url-border: #555;
+        --color-result-search-url-font: #fff;
+        --color-result-url-font: #fff;
+        --color-result-vim-arrow: #8af;
+        --color-result-vim-selected: #1f1f23cc;
+        --color-search-background-hover: #58f;
+        --color-search-background: #2b2e36;
+        --color-search-border: #555;
+        --color-search-font: #fff;
+        --color-search-shadow: 0 2px 8px rgba(34, 38, 46, 0.25);
+        --color-settings-engine-description-font: #909090;
+        --color-settings-table-group-background: #1b1b21;
+        --color-settings-tr-hover: #2c2c32;
+        --color-show-btn-background: #555;
+        --color-show-btn-font: #fff;
+        --color-sidebar-background: #292c34;
+        --color-sidebar-border: #555;
+        --color-sidebar-font: #fff;
+        --color-success-background: #0e390a;
+        --color-success: #79f56e;
+        --color-toolkit-badge-background: #555;
+        --color-toolkit-badge-font: #fff;
+        --color-toolkit-checkbox-input-border: #58f;
+        --color-toolkit-checkbox-label-background: #222;
+        --color-toolkit-checkbox-label-border: #333;
+        --color-toolkit-checkbox-onoff-off-background: #313338;
+        --color-toolkit-checkbox-onoff-off-mark-background: #ddd;
+        --color-toolkit-checkbox-onoff-off-mark-color: #222;
+        --color-toolkit-checkbox-onoff-on-background: #313338;
+        --color-toolkit-checkbox-onoff-on-mark-background: #58f;
+        --color-toolkit-checkbox-onoff-on-mark-color: #222;
+        --color-toolkit-dialog-background: #1e1e22;
+        --color-toolkit-dialog-border: #555;
+        --color-toolkit-engine-tooltip-background: #222;
+        --color-toolkit-engine-tooltip-border: #333;
+        --color-toolkit-input-text-font: #fff;
+        --color-toolkit-kbd-background: #fff;
+        --color-toolkit-kbd-font: #000;
+        --color-toolkit-loader-border: rgba(255, 255, 255, 0.2);
+        --color-toolkit-loader-borderleft: rgba(0, 0, 0, 0);
+        --color-toolkit-select-background-hover: #373b49;
+        --color-toolkit-select-background: #313338;
+        --color-toolkit-select-border: #555;
+        --color-toolkit-tabs-label-border: #222;
+        --color-toolkit-tabs-section-border: #555;
+        --color-url-font: #8af;
+        --color-url-visited-font: #c09cd9;
+        --color-warning-background: #39300a;
+        --color-warning: #f1d561;
+      }
+
+      :root.theme-black {
+        --color-answer-background: #26292f;
+        --color-answer-font: #bbb;
+        --color-autocomplete-background-hover: #1e1e22;
+        --color-autocomplete-background: #2b2e36;
+        --color-autocomplete-border: #555;
+        --color-autocomplete-font: #fff;
+        --color-autocomplete-shadow: 0 2px 8px rgba(34, 38, 46, 0.25);
+        --color-backtotop-background: #2b2e36;
+        --color-backtotop-border: #333;
+        --color-backtotop-font: #bbb;
+        --color-base-background-mobile: #000;
+        --color-base-background-mobile: #222428;
+        --color-base-background: #000;
+        --color-base-background: #222428;
+        --color-base-font-rgb: 187, 187, 187;
+        --color-base-font: #bbb;
+        --color-btn-background: #58f;
+        --color-btn-font: #222;
+        --color-categories-item-border-selected: #58f;
+        --color-categories-item-selected-font: #58f;
+        --color-doc-code-background: #4d5a6f;
+        --color-doc-code: #ddd;
+        --color-error-background: #390a0a;
+        --color-error: #f55b5b;
+        --color-favicon-background-color: #ddd;
+        --color-favicon-border-color: #ccc;
+        --color-footer-background: #000;
+        --color-footer-background: #1e1e22;
+        --color-footer-border: #333;
+        --color-header-background: #000;
+        --color-header-background: #1e1e22;
+        --color-header-border: #333;
+        --color-result-background: #26292f;
+        --color-result-border: #333;
+        --color-result-description-highlight-font: #fff;
+        --color-result-detail-background: #1a1a1c;
+        --color-result-detail-font: #fff;
+        --color-result-detail-hr: #555;
+        --color-result-detail-label-font: lightgray;
+        --color-result-detail-link: #8af;
+        --color-result-detail-loader-border: rgba(255, 255, 255, 0.2);
+        --color-result-detail-loader-borderleft: rgba(0, 0, 0, 0);
+        --color-result-engines-font: #a4a4a4;
+        --color-result-image-background: #222;
+        --color-result-image-span-font-selected: #222;
+        --color-result-image-span-font: #bbb;
+        --color-result-link-font-highlight: #8af;
+        --color-result-link-font: #8af;
+        --color-result-link-visited-font: #c09cd9;
+        --color-result-publishdate-font: #888;
+        --color-result-search-url-border: #555;
+        --color-result-search-url-font: #fff;
+        --color-result-url-font: #fff;
+        --color-result-vim-arrow: #8af;
+        --color-result-vim-selected: #1f1f23cc;
+        --color-search-background-hover: #58f;
+        --color-search-background: #2b2e36;
+        --color-search-border: #555;
+        --color-search-font: #fff;
+        --color-search-shadow: 0 2px 8px rgba(34, 38, 46, 0.25);
+        --color-settings-engine-description-font: #909090;
+        --color-settings-table-group-background: #1b1b21;
+        --color-settings-tr-hover: #2c2c32;
+        --color-show-btn-background: #555;
+        --color-show-btn-font: #fff;
+        --color-sidebar-background: #000;
+        --color-sidebar-background: #292c34;
+        --color-sidebar-border: #555;
+        --color-sidebar-font: #fff;
+        --color-success-background: #0e390a;
+        --color-success: #79f56e;
+        --color-toolkit-badge-background: #555;
+        --color-toolkit-badge-font: #fff;
+        --color-toolkit-checkbox-input-border: #58f;
+        --color-toolkit-checkbox-label-background: #222;
+        --color-toolkit-checkbox-label-border: #333;
+        --color-toolkit-checkbox-onoff-off-background: #313338;
+        --color-toolkit-checkbox-onoff-off-mark-background: #ddd;
+        --color-toolkit-checkbox-onoff-off-mark-color: #222;
+        --color-toolkit-checkbox-onoff-on-background: #313338;
+        --color-toolkit-checkbox-onoff-on-mark-background: #58f;
+        --color-toolkit-checkbox-onoff-on-mark-color: #222;
+        --color-toolkit-dialog-background: #1e1e22;
+        --color-toolkit-dialog-border: #555;
+        --color-toolkit-engine-tooltip-background: #222;
+        --color-toolkit-engine-tooltip-border: #333;
+        --color-toolkit-input-text-font: #fff;
+        --color-toolkit-kbd-background: #fff;
+        --color-toolkit-kbd-font: #000;
+        --color-toolkit-loader-border: rgba(255, 255, 255, 0.2);
+        --color-toolkit-loader-borderleft: rgba(0, 0, 0, 0);
+        --color-toolkit-select-background-hover: #373b49;
+        --color-toolkit-select-background: #313338;
+        --color-toolkit-select-border: #555;
+        --color-toolkit-tabs-label-border: #222;
+        --color-toolkit-tabs-section-border: #555;
+        --color-url-font: #8af;
+        --color-url-visited-font: #c09cd9;
+        --color-warning-background: #39300a;
+        --color-warning: #f1d561;
+      }
+
+      html {
+        -moz-text-size-adjust: 100%;
+        -ms-text-size-adjust: 100%;
+        -webkit-text-size-adjust: 100%;
+        background-color: var(--color-base-background);
+        color: var(--color-base-font);
+        font-family: sans-serif;
+        font-size: 0.9em;
+        margin: 0;
+        padding: 0;
+        scroll-behavior: smooth;
+        text-size-adjust: 100%;
+      }
+
+      body {
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        height: 100vh;
+        justify-content: center;
+        margin: 0;
+        padding: 0;
+      }
+
+      main {
+        margin: 0 auto;
+        max-width: min(90%, 44rem);
+        width: 100%;
+      }
+
+      button {
+        display: flex;
+      }
+
+      svg {
+        height: 1.5rem;
+      }
+
+      .title {
+        margin: 4rem auto;
+      }
+
+      .title img {
+        height: 4rem;
+        width: 100%;
+      }
+
+      .search_box {
+        border-radius: 0.8rem;
+        box-shadow: var(--color-search-shadow);
+        display: inline-flex;
+        flex-direction: row;
+        position: relative;
+        white-space: nowrap;
+        width: 100%;
+      }
+
+      #q {
+        background: none repeat scroll 0 0 var(--color-search-background);
+        border-radius: 0.8rem 0 0 0.8rem;
+        border: none;
+        color: var(--color-search-font);
+        font-size: 1.1rem;
+        line-height: 1.5rem;
+        outline: 0;
+        padding: 0.8rem;
+      }
+
+      #q {
+        padding-block-start: 1rem;
+        width: 100%;
+      }
+
+      #q::-ms-clear,
+      #q::-webkit-search-cancel-button {
+        display: none;
+      }
+
+      #clear_search:hover {
+        color: var(--color-search-background-hover);
+      }
+
+      #q:placeholder-shown + #clear_search {
+        display: none;
+      }
+
+      #clear_search,
+      #send_search {
+        background: var(--color-search-background);
+        border: none;
+        color: var(--color-search-font);
+        display: flex;
+        outline: none;
+        padding: 0.8rem;
+      }
+
+      #send_search {
+        border-radius: 0 0.8rem 0.8rem 0;
+      }
+
+      #send_search:hover {
+        background-color: var(--color-search-background-hover);
+        color: var(--color-search-background);
+        cursor: pointer;
+      }
+
+      .autocomplete {
+        background-color: var(--color-autocomplete-background);
+        border-radius: 10px;
+        display: none;
+        max-height: 0;
+        overflow-y: hidden;
+        position: absolute;
+        text-align: left;
+        top: calc(100% + 1rem);
+        width: 100%;
+      }
+
+      .autocomplete:empty {
+        display: none;
+      }
+
+      .autocomplete > ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+      }
+
+      .autocomplete > ul > li {
+        cursor: pointer;
+        padding: 0.5rem 1rem;
+        pointer-events: all;
+      }
+
+      .autocomplete > ul > li.active,
+      .autocomplete > ul > li:active,
+      .autocomplete > ul > li:focus,
+      .autocomplete > ul > li:hover {
+        background-color: var(--color-autocomplete-background-hover);
+      }
+
+      .autocomplete.open {
+        background-color: var(--color-autocomplete-background);
+        border-radius: 0.8rem;
+        color: var(--color-autocomplete-font);
+        display: block;
+        max-height: 32rem;
+        overflow-y: auto;
+        z-index: 10;
+      }
+
+      .autocomplete.open:empty {
+        display: none;
+      }
+    </style>
+  </head>
+
+  <body>
+    <main>
+      <div class="title">
+        <img
+          src="https://raw.githubusercontent.com/searxng/searxng/master/src/brand/searxng.svg"
+          alt="SearX NG Logo"
+        />
+      </div>
+      <form
+        id="search"
+        method="GET"
+        action="/search"
+        role="search"
+      >
+        <div class="search_box">
+          <input
+            id="q"
+            name="q"
+            type="text"
+            placeholder="Search for..."
+            autocomplete="off"
+            autocapitalize="none"
+            spellcheck="false"
+            autocorrect="off"
+            dir="auto"
+            value=""
+          />
+          <button
+            id="clear_search"
+            type="reset"
+            aria-label="clear"
+            class="empty"
+          >
+            <svg
+              viewBox="0 0 512 512"
+              class="ion-icon-big"
+              aria-hidden="true"
+            >
+              <path
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="32"
+                d="M368 368L144 144M368 144L144 368"
+              ></path>
+            </svg>
+          </button>
+          <button
+            id="send_search"
+            type="submit"
+            aria-label="search"
+          >
+            <svg
+              viewBox="0 0 512 512"
+              class="ion-icon-big"
+              aria-hidden="true"
+            >
+              <path
+                d="M221.09 64a157.09 157.09 0 10157.09 157.09A157.1 157.1 0 00221.09 64z"
+                fill="none"
+                stroke="currentColor"
+                stroke-miterlimit="10"
+                stroke-width="32"
+              ></path>
+              <path
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-miterlimit="10"
+                stroke-width="32"
+                d="M338.29 338.29L448 448"
+              ></path>
+            </svg>
+          </button>
+
+          <div class="autocomplete">
+            <ul></ul>
+          </div>
+        </div>
+      </form>
+    </main>
+
+    <script src="./newTab2.js"></script>
+  </body>
+</html>

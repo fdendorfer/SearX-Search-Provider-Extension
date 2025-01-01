@@ -1,17 +1,16 @@
 <script lang="ts" setup>
   import '~style.css'
 
-  import { useSearxHostname } from './composables/use-searx-hostname'
+  import { useStorage } from './composables/useStorage'
 
-  const { searxHostname } = useSearxHostname()
+  const { searxHostname, searxIsNewTab, searxTheme } = useStorage()
 </script>
 
 <template>
-  <div class="overflow-hidden relative flex h-full flex-col gap-12 p-4">
-
+  <div class="relative flex h-full flex-col gap-12 overflow-hidden p-4">
     <!-- Background -->
     <svg
-      class="absolute -right-[44%] -bottom-[46%] w-full h-full -z-10"
+      class="absolute -bottom-[46%] -right-[44%] -z-10 h-full w-full"
       height="1000"
       viewBox="0 0 500 1000"
       width="500"
@@ -69,55 +68,93 @@
     </svg>
 
     <!-- Body -->
-    <main class="flex flex-auto flex-col gap-6">
+    <main class="flex-1">
       <!-- Header -->
       <header class="">
-        <h1 class="text-lg font-semibold leading-8 text-base-content-highlight">SearX</h1>
-        <p class="text-sm leading-5">Change the SearX instance. Automatically synced.</p>
+        <h1 class="text-lg font-semibold leading-8 text-base-content-highlight">SearX Options</h1>
+        <p class="text-sm leading-5">All settings are automatically saved.</p>
       </header>
 
-      <section class="my-8">
-        <!-- Form -->
-        <form class="">
+      <!-- Form -->
+      <form class="">
+        <label
+          class="mt-8 block"
+          for="searx-hostname"
+        >
+          SearX Instance Host
+        </label>
+        <div class="flex rounded-md shadow-sm">
+          <span class="inline-flex items-center rounded-l-md border border-r-0 border-base-300 px-3 sm:text-sm">
+            https://
+          </span>
+
+          <input
+            id="searx-hostname"
+            v-model="searxHostname"
+            aria-describedby="searx-hostname-description"
+            class="focus-visible:focus-outline-util block w-full min-w-0 flex-1 rounded-none rounded-r-md border-0 py-1.5 text-base-content-highlight ring-1 ring-inset ring-base-300 sm:text-sm sm:leading-6"
+            name="searx-hostname"
+            placeholder="searx.example.com"
+            required
+            type="text"
+          />
+        </div>
+
+        <p
+          id="searx-hostname-description"
+          class="mt-2"
+        >
+          You can find a list of instances in
+          <a
+            class="hover:hover-text-util focus-visible:focus-outline-util underline"
+            href="https://searx.space"
+            target="_blank"
+          >
+            searx.space
+          </a>
+        </p>
+
+        <label
+          class="mt-8 block"
+          for="searx-isNewTab"
+        >
+          Do you want to land on SearX when you open a new tab?
+        </label>
+        <div class="mt-2 flex">
+          <input
+            id="searx-isNewTab"
+            v-model="searxIsNewTab"
+            aria-describedby="searx-isNewTab-description"
+            class=""
+            name="searx-isNewTab"
+            required
+            type="checkbox"
+          />
           <label
-            class="block text-sm font-medium leading-6"
-            for="searx-hostname"
+            for="searx-isNewTab"
+            class="ml-2 text-sm"
           >
-            SearX Instance Host
+            Yes, I want to use SearX as my new tab
           </label>
+        </div>
 
-          <div class="mt-2 flex rounded-md shadow-sm">
-            <span class="inline-flex items-center rounded-l-md border border-r-0 border-base-300 px-3 sm:text-sm">
-              https://
-            </span>
-
-            <input
-              id="searx-hostname"
-              v-model="searxHostname"
-              aria-describedby="searx-hostname-description"
-              class="focus-visible:focus-outline-util block w-full min-w-0 flex-1 rounded-none rounded-r-md border-0 py-1.5 text-base-content-highlight ring-1 ring-inset ring-base-300 sm:text-sm sm:leading-6"
-              name="searx-hostname"
-              placeholder="searx.example.com"
-              required
-              type="text"
-            />
-          </div>
-
-          <p
-            id="searx-hostname-description"
-            class="mt-3 text-sm"
+        <div class="mt-8">
+          <label
+            for="searx-theme-select"
+            class="block"
+            >New Tab Theme</label
           >
-            You can find a list of instances in
-            <a
-              class="hover:hover-text-util focus-visible:focus-outline-util underline"
-              href="https://searx.space"
-              target="_blank"
-            >
-              searx.space
-            </a>
-          </p>
-        </form>
-      </section>
+          <select
+            v-model="searxTheme"
+            id="searx-theme-select"
+          >
+            <option value="auto">Auto (matches your device theme)</option>
+            <option value="light">Light</option>
+            <option value="dark">Dark</option>
+            <option value="black">Black</option>
+          </select>
+        </div>
+      </form>
     </main>
 
     <footer class="flex-none text-center text-sm font-medium">

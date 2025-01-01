@@ -1,7 +1,7 @@
-import { useSearxHostname } from '~composables/use-searx-hostname'
+import { useStorage } from '~composables/useStorage'
 
-(async () => {
-  const { searxHostname } = useSearxHostname()
+;(async () => {
+  const { searxHostname, searxIsNewTab } = useStorage()
 
-  console.info(`Background script is running`)
+  console.info(`Background script is running`, searxHostname.value, searxIsNewTab.value)
 })()

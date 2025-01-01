@@ -1,0 +1,58 @@
+{
+  "manifest_version": 3,
+  "action": {},
+  "version": "0.0.0",
+  "author": "Florian Dendorfer",
+  "name": "TEST | SearX Search Provider",
+  "description": "A configurable browser extension that sets SearX as your default search engine.",
+  "background": {},
+  "options_ui": {
+    "page": "options.html",
+    "open_in_tab": true
+  },
+  "chrome_url_overrides": {
+    "newtab": "newTab2.html"
+  },
+  "permissions": [
+    "storage",
+    "declarativeNetRequest",
+    "declarativeNetRequestFeedback"
+  ],
+  "chrome_settings_overrides": {
+    "search_provider": {
+      "name": "SearX",
+      "keyword": "searxng, searx, @searxng, @searx, @sx",
+      "search_url": "https://searx.akbal.dev/search?q={searchTerms}",
+      "suggest_url": "https://searx.akbal.dev/autocompleter?q={searchTerms}",
+      "favicon_url": "https://searx.akbal.dev/favicon.ico",
+      "is_default": true,
+      "encoding": "UTF-8"
+    }
+  },
+  "web_accessible_resources": [
+    {
+      "resources": [],
+      "matches": []
+    },
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "resources": [
+        "__plasmo_hmr_proxy__"
+      ]
+    }
+  ],
+  "host_permissions": [
+    "http://searx-to-localhost.akbal.dev/*",
+    "https://searx-to-localhost.akbal.dev/*",
+    "http://searx.localhost/*",
+    "https://searx.localhost/*"
+  ],
+  "declarative_net_request": {
+    "rule_resources": []
+  },
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self'; sandbox allow-forms allow-scripts allow-same-origin allow-modals"
+  }
+}

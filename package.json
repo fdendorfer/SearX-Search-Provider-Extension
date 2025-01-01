@@ -19,8 +19,8 @@
     "@plasmohq/storage": "^1.9.0",
     "@vueuse/core": "^10.7.0",
     "lodash-es": "^4.17.21",
-    "plasmo": "0.84.0",
-    "vue": "^3.3.11"
+    "plasmo": "0.89.3",
+    "vue": "^3.5.13"
   },
   "devDependencies": {
     "@ianvs/prettier-plugin-sort-imports": "4.1.1",
@@ -53,6 +53,9 @@
         "encoding": "UTF-8"
       }
     },
+    "chrome_url_overrides": {
+      "newtab": "newTab.html"
+    },
     "web_accessible_resources": [
       {
         "resources": [
@@ -69,7 +72,8 @@
     ],
     "permissions": [
       "declarativeNetRequest",
-      "declarativeNetRequestFeedback"
+      "declarativeNetRequestFeedback",
+      "storage"
     ],
     "declarative_net_request": {
       "rule_resources": [
@@ -80,5 +84,6 @@
         }
       ]
     }
-  }
+  },
+  "packageManager": "pnpm@9.15.2+sha512.93e57b0126f0df74ce6bff29680394c0ba54ec47246b9cf321f0121d8d9bb03f750a705f24edc3c1180853afd7c2c3b94196d0a3d53d3e069d9e2793ef11f321"
 }
